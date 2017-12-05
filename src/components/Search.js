@@ -15,7 +15,23 @@ class Search extends Component{
     }
     
     
-    // insert search method
+    search(event) {
+        event.preventDefault()
+        axios.get(`/api/${this.state.searchType}?q=${this.state.searchTerm}`).then(resp => {
+            console.log(resp.data)
+            if (this.state.searchType === 'blogs') {
+                this.setState({
+                    blogResults: resp.data,
+                    userResults: []
+                })
+            } else {
+                this.setState({
+                    userResults: resp.data,
+                    blogResults: []
+                })
+            }
+        }).catch(console.log)
+    }
     
     
     render(){
