@@ -14,6 +14,10 @@ import Edit from './components/Edit'
 import User from './components/User'
 import NewUser from './components/NewUser'
 
+
+//axios types of HTTP request to use axios.get() axios.post() axios.put() axios.delete()
+//axios.get('/api/blogs') or axios.get('https://swapi.co/api/people/1/')
+
 class App extends Component {
   render() {
     return (
