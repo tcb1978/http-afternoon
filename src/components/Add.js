@@ -21,15 +21,15 @@ class Add extends Component {
     }
 
     post() {
-        var body = {
+        const body = {
             title: this.state.title,
             subTitle: this.state.subTitle,
             image: this.state.image,
             text: this.state.text
         }
-        axios.post('/api/blogs', body).then(resp => {
-            this.props.history.push(`/blog/${resp.data.id}`)
-        }).catch(console.log)
+        axios.post('/api/blogs', body).then(response => {
+            this.props.history.push(`/blog/${response.data.id}`)
+        }).catch(err => console.log(err))
     }
     
     

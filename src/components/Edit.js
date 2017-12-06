@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ConfirmModal from './subcomponents/ConfirmModal';
 
-// import axios
+import axios from 'axios';
 
 
 class Edit extends Component {
@@ -18,7 +18,14 @@ class Edit extends Component {
         this.no = this.no.bind(this);
     }
 
-    // insert componentWillMount
+    componentWillMount() {
+        axios.get(`/api/blog/${this.props.match.params.id}`).then(response => {
+            console.log(response.data)
+            this.setState({
+                blog: response.data
+            })
+        }).catch(console.log)
+    }
 
     
     // insert updatePost 
