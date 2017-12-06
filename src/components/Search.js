@@ -20,11 +20,13 @@ class Search extends Component{
         axios.get(`/api/${this.state.searchType}?q=${this.state.searchTerm}`).then(resp => {
             console.log(resp.data)
             if (this.state.searchType === 'blogs') {
+                this.props.history.push(makeQuery('/search?', { q: this.state.searchTerm, type: this.state.searchType }))
                 this.setState({
                     blogResults: resp.data,
                     userResults: []
                 })
             } else {
+                this.props.history.push(makeQuery('/search?', { q: this.statesearchTerm, type: this.state.ysearchType }))
                 this.setState({
                     userResults: resp.data,
                     blogResults: []

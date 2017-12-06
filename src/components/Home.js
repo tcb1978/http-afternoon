@@ -15,21 +15,19 @@ class Home extends Component{
     }
 
     componentWillMount() {
-        axios.get('/api/featured').then(resp => {
+        axios.get('/api/featured').then(results => {
             this.setState({
-                featured: resp.data,
-                index: (~~(Math.random() * resp.data.length) + 0),
-                posts: resp.data
+                featured: results.data,
+                index: (~~(Math.random() * results.data.length) + 0),
+                posts: results.data
             })
         }).catch(console.log)
     }
     
 
     render(){
-        const post = this.state.posts.map((post, i) => {
-            <BlogThumb key={i} blog={post} />
-        })// map over your recommended blogs here, replace null.
-        const posts = null
+        // map over your recommended blogs here
+        const posts = this.state.posts.map((psts, i) => <BlogThumb key={i} blog={psts} />)
 
         return(
             <div className="content" >
